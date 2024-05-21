@@ -102,7 +102,6 @@ class Menu:
             if not self.eval_input():
                 return
             if self.input == '1':
-                print('I am here!')
                 time.sleep(1)
                 self.get_category_joke()
                 self.do_over_menu()
