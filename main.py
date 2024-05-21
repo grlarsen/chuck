@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # test creating a simple GUI for chuck norris Facts
 import tkinter as tk
 
