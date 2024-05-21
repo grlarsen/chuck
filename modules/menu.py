@@ -1,13 +1,14 @@
 # module to handle text i/o and 
 from modules.joke import Joke
-import time
 
 class Menu:
     def __init__(self) -> None:
+        self.header = self.header()
         self.active = {}
         self.joke = Joke()
         self.input = None
         self.menu_level = None
+        self.category = None
 
         # init methods:
         self.start_menu()
@@ -23,8 +24,11 @@ class Menu:
         return True
 
     # Header
+    def header(self):
+        return 'Chuck Norris Facts!'
+    
     def facts(self):
-        print('\nChuck Norris Facts!')
+        print(self.header)
 
     # Menus
     def start_menu(self):
@@ -47,7 +51,7 @@ class Menu:
         for key, value in self.active.items():
             print(f'[{key}]: {value}')
 
-    # Main methods
+    # Joke/Facts methods
     def get_random_joke(self):
         self.menu_level = 'random'
         self.joke.get('random')
@@ -60,9 +64,8 @@ class Menu:
     def get_category_joke(self):
         self.menu_level = self.category
         self.joke.get(self.category)
-        time.sleep(2)
         
-    # Render method
+    # Update method
     def update(self):
         if self.input == 'q':
             quit()
@@ -102,14 +105,18 @@ class Menu:
             if not self.eval_input():
                 return
             if self.input == '1':
-                time.sleep(1)
                 self.get_category_joke()
                 self.do_over_menu()
                 return
 
             elif self.input == '2':
                 self.get_selection()
-                
+    
+    # Render method
+    def run(self):
+        self.print_active_menu()
+        self.get_input()
+        self.update()
                 
             
                 

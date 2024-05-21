@@ -8,6 +8,7 @@ class Joke:
     def __init__(self) -> None:
         # init methods:
         self.get_categories()
+        self.current = 'Chuck Norris Facts'
 
     def req(self, endpoint=None):
         '''GET-request for the Chuck Norris IO API'''
@@ -21,7 +22,15 @@ class Joke:
         return res
     
     def get(self, enpoint=None):
-        print('\n', self.req(enpoint)['value'])
+        self.current = self.req(enpoint)['value']
+        # self.current = self.current.split(' ')
+        # words = len(self.current)
+        # inserts = words // 8
+        # for i in range(1,inserts+1):
+        #     self.current.insert(i*10, '\n')
+        # self.current = ' '.join(self.current)
+                
+        
         
     def get_categories(self):
         self.categories = {
