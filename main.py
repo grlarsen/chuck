@@ -1,6 +1,12 @@
 # test creating a simple GUI for chuck norris Facts
 import tkinter as tk
+
+from argparse import ArgumentParser
 from modules.menu import Menu
+
+parser = ArgumentParser()
+parser.add_argument('-c', '--cli', action='store_true')
+args = parser.parse_args()
 
 class Gui:
     def __init__(self) -> None:
@@ -52,7 +58,7 @@ class Gui:
                 text=value,
                 command=lambda key=key: self.command(key),
                 height=1, width=20,
-                background='black',
+                # background='black',
                 )
             self.buttons.append(btn)
         
@@ -83,7 +89,22 @@ class Gui:
         # main loop
         self.window.mainloop()
 
+class Cli:
+
+    def __init__(self) -> None:
+        self.menu = Menu(cli=True)
+
+    def run(self):
+        # render everything:
+        while True:
+            self.menu.run()
+        # pass
 
 if __name__ == '__main__':
-    gui = Gui()
-    gui.run()
+    if args.cli:
+        main = Cli()
+        main.run()
+
+    else:
+        main = Gui()
+        main.run()

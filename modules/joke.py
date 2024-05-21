@@ -5,7 +5,10 @@ import requests as re
 class Joke:
     BASE_URL = 'https://api.chucknorris.io/jokes/'
 
-    def __init__(self) -> None:
+    def __init__(self, cli:bool=False) -> None:
+        # print to command line:
+        self.cli = cli
+
         # init methods:
         self.get_categories()
         self.current = 'Chuck Norris Facts'
@@ -23,6 +26,8 @@ class Joke:
     
     def get(self, enpoint=None):
         self.current = self.req(enpoint)['value']
+        if self.cli:
+            print(self.current)
         # self.current = self.current.split(' ')
         # words = len(self.current)
         # inserts = words // 8

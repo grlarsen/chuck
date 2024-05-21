@@ -2,10 +2,11 @@
 from modules.joke import Joke
 
 class Menu:
-    def __init__(self) -> None:
+    def __init__(self, cli:bool=False) -> None:
+        self.cli = cli
         self.header = self.header()
         self.active = {}
-        self.joke = Joke()
+        self.joke = Joke(self.cli)
         self.input = None
         self.menu_level = None
         self.category = None
