@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # test creating a simple GUI for chuck norris Facts
-import tkinter as tk
-
 from argparse import ArgumentParser
 from modules.menu import Menu
 
 parser = ArgumentParser()
 parser.add_argument('-c', '--cli', action='store_true')
 args = parser.parse_args()
+
+if not args.cli:
+    import tkinter as tk
 
 class Gui:
     def __init__(self) -> None:
