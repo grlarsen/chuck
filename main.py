@@ -77,11 +77,11 @@ class Gui:
             foreground='white',
             background='black',
             wraplength=400,
-            
+            font=('Arial', 30)
             )
         
         # place frame in window
-        self.frm_output.grid(row=0, column=1, sticky='nsew,')
+        self.frm_output.grid(row=0, column=1, sticky='nsew')
 
     def run(self):
         # render frames
